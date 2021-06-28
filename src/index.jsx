@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import TodoList from './TodoList';
 
+// TODO: load todo items from storage
 const todoItems = [
   { text: 'Write tests' },
   { text: 'Ride the bike' },
