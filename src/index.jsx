@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import TodoList from './TodoList';
 
+import './index.css';
+
 // TODO: load todo items from storage
 const todoItems = [
   { text: 'Write tests' },
