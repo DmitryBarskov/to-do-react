@@ -1,12 +1,17 @@
 import React from 'react';
 
-function TodoItem(props) {
+function TodoItem({ todoItem, onChange }) {
+  const className = todoItem.completed ? 'completed' : '';
   return (
-    <div>
+    <div className={className}>
       <span>
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          checked={todoItem.completed}
+          readOnly
+        />
       </span>
-      {props.todoItem.text}
+      {todoItem.text}
     </div>
   );
 }

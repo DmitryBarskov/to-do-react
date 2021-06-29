@@ -7,7 +7,7 @@ import TodoList from './TodoList';
 const todoItems = [
   { text: 'Write tests' },
   { text: 'Ride the bike' },
-  { text: 'Buy some milk' }
+  { text: 'Buy some milk', completed: true }
 ];
 
 ReactDOM.render(
