@@ -2,7 +2,6 @@ import React from 'react';
 
 import TodoItem from './TodoItem';
 
-// TODO: add ability to create todo items.
 function TodoList(props) {
   return (
     <div>

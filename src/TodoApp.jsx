@@ -1,24 +1,43 @@
 import React from 'react';
 
-import TodoInput from './TodoInput';
+import TodoForm from './TodoForm';
 import TodoList from './TodoList';
 
 import './index.css';
 
-// TODO: load todo items from storage
-const todoItems = [
-  { text: 'Write tests' },
-  { text: 'Ride the bike' },
-  { text: 'Buy some milk', completed: true }
-];
+class TodoApp extends React.Component {
+  // TODO: Add ability to persist todo items
+  // TODO: load todo items from storage
+  constructor(props) {
+    super(props);
+    this.state = {
+      todoItems: [
+        { text: 'Write tests' },
+        { text: 'Ride the bike' },
+        { text: 'Buy some milk', completed: true }
+      ]
+    };
+  }
 
-function TodoApp() {
-  return (
-    <div>
-      <TodoList todoItems={todoItems} />
-      <TodoInput />
-    </div>
-  );
+  addTodoItem(text) {
+    this.setState({
+      todoItems: [
+        ...this.state.todoItems,
+        { text, completed: false }
+      ]
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <TodoList todoItems={this.state.todoItems} />
+        <TodoForm
+          onSubmit={(todoItemText) => this.addTodoItem(todoItemText)}
+        />
+      </div>
+    );
+  }
 }
 
 export default TodoApp;
