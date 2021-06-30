@@ -11,30 +11,47 @@ class TodoApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      todoItems: [
-        { id: 1, text: 'Write tests' },
-        { id: 2, text: 'Ride the bike' },
-        { id: 3, text: 'Buy some milk', completed: true },
-      ],
-      nextId: 4,
+      todoItems: [],
     };
   }
 
+  componentDidMount() {
+    const { storage } = this.props;
+
+    this.setState({
+      todoItems: storage.all(),
+    });
+  }
+
+  changeCompleted(todoItem, completed) {
+    const { storage } = this.props;
+
+    storage.update({ ...todoItem, completed });
+
+    this.setState({
+      todoItems: storage.all(),
+    });
+  }
+
   addTodoItem(text) {
-    this.setState((state) => ({
-      todoItems: [
-        ...state.todoItems,
-        { id: state.nextId, text, completed: false },
-      ],
-      nextId: state.nextId + 1,
-    }));
+    const { storage } = this.props;
+
+    const todoItem = { text, completed: false };
+    storage.save(todoItem);
+
+    this.setState({
+      todoItems: storage.all(),
+    });
   }
 
   render() {
     const { todoItems } = this.state;
     return (
       <div>
-        <TodoList todoItems={todoItems} />
+        <TodoList
+          todoItems={todoItems}
+          onCompletedChange={(todoItem, completed) => this.changeCompleted(todoItem, completed)}
+        />
         <TodoForm
           onSubmit={(todoItemText) => this.addTodoItem(todoItemText)}
         />
