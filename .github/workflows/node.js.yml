@@ -19,4 +19,8 @@ jobs:
       with:
         node-version: '${{ steps.nvm.outputs.NVMRC }}'
 
-    - run: yarn lint
+    - name: Install dependencies
+      run: yarn
+
+    - name: Run ESLint
+      run: yarn lint
