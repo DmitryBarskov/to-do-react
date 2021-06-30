@@ -12,26 +12,29 @@ class TodoApp extends React.Component {
     super(props);
     this.state = {
       todoItems: [
-        { text: 'Write tests' },
-        { text: 'Ride the bike' },
-        { text: 'Buy some milk', completed: true }
-      ]
+        { id: 1, text: 'Write tests' },
+        { id: 2, text: 'Ride the bike' },
+        { id: 3, text: 'Buy some milk', completed: true },
+      ],
+      nextId: 3,
     };
   }
 
   addTodoItem(text) {
-    this.setState({
+    this.setState((state) => ({
       todoItems: [
-        ...this.state.todoItems,
-        { text, completed: false }
-      ]
-    });
+        ...state.todoItems,
+        { id: state.nextId, text, completed: false },
+      ],
+      nextId: state.nextId + 1,
+    }));
   }
 
   render() {
+    const { todoItems } = this.state;
     return (
       <div>
-        <TodoList todoItems={this.state.todoItems} />
+        <TodoList todoItems={todoItems} />
         <TodoForm
           onSubmit={(todoItemText) => this.addTodoItem(todoItemText)}
         />

@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // TODO: Add ability to complete tasks
-function TodoItem({ todoItem, onChange }) {
+function TodoItem({ todoItem }) {
   const className = todoItem.completed ? 'completed' : '';
   return (
     <div className={className}>
@@ -16,5 +17,9 @@ function TodoItem({ todoItem, onChange }) {
     </div>
   );
 }
+
+TodoItem.propTypes = {
+  todoItem: PropTypes.objectOf(PropTypes.any).isRequired,
+};
 
 export default TodoItem;
