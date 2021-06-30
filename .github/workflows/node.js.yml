@@ -9,8 +9,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Read .nvmrc
+      id: nvm
+      run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+
     - name: Setup Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '.nvmrc'
+        node-version: '${{ steps.nvm.outputs.NVMRC }}'
+
     - run: yarn lint
