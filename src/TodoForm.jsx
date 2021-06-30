@@ -1,43 +1,56 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class TodoForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: ""
+      inputValue: '',
     };
   }
 
   handleClick(event) {
+    const { inputValue } = this.state;
+    const { onSubmit } = this.props;
+
     event.preventDefault();
-    this.props.onSubmit(this.state.inputValue);
-    this.setState({ inputValue: "" });
+
+    onSubmit(inputValue);
+    this.setState({ inputValue: '' });
   }
 
   inputChanged(event) {
     this.setState({
-      inputValue: event.target.value
+      inputValue: event.target.value,
     });
   }
 
   render() {
+    const { inputValue } = this.state;
+    const { placeholder, buttonLabel } = this.props;
     return (
       <form onSubmit={(e) => this.handleClick(e)}>
         <input
           type="text"
-          placeholder={this.props.placeholder}
+          placeholder={placeholder}
           onChange={(e) => this.inputChanged(e)}
-          value={this.state.inputValue}
+          value={inputValue}
         />
-        <button>{this.props.buttonLabel}</button>
+        <button type="submit">{buttonLabel}</button>
       </form>
     );
   }
 }
 
+TodoForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  buttonLabel: PropTypes.string,
+};
+
 TodoForm.defaultProps = {
-  placeholder: "Buy some milk",
-  buttonLabel: "Add"
+  placeholder: 'Buy some milk',
+  buttonLabel: 'Add',
 };
 
 export default TodoForm;
