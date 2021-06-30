@@ -16,7 +16,7 @@ class TodoApp extends React.Component {
         { id: 2, text: 'Ride the bike' },
         { id: 3, text: 'Buy some milk', completed: true },
       ],
-      nextId: 3,
+      nextId: 4,
     };
   }
 
