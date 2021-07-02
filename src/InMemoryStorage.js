@@ -24,6 +24,10 @@ class InMemoryStorage {
     old.text = todoItem.text;
     old.completed = todoItem.completed;
   }
+
+  delete(todoItem) {
+    this.todoItems = this.todoItems.filter((oldItem) => oldItem.id !== todoItem.id);
+  }
 }
 
 export default InMemoryStorage;
