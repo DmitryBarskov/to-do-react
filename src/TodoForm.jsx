@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 class TodoForm extends React.Component {
   constructor(props) {
@@ -41,12 +40,6 @@ class TodoForm extends React.Component {
     );
   }
 }
-
-TodoForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  buttonLabel: PropTypes.string,
-};
 
 TodoForm.defaultProps = {
   placeholder: 'Buy some milk',

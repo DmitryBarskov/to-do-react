@@ -1,15 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-// TODO: Add ability to complete tasks
-function TodoItem({ todoItem }) {
+function TodoItem({ todoItem, onCompletedChange }) {
   const className = todoItem.completed ? 'completed' : '';
+
+  const handleClick = (event) => {
+    onCompletedChange(event.target.checked);
+  };
+
   return (
     <div className={className}>
       <span>
         <input
           type="checkbox"
-          checked={todoItem.completed}
+          defaultChecked={todoItem.completed}
+          onClick={handleClick}
           readOnly
         />
       </span>
@@ -17,9 +21,5 @@ function TodoItem({ todoItem }) {
     </div>
   );
 }
-
-TodoItem.propTypes = {
-  todoItem: PropTypes.objectOf(PropTypes.any).isRequired,
-};
 
 export default TodoItem;
