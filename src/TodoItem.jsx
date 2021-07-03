@@ -9,22 +9,16 @@ function TodoItem({ todoItem, onCompletedChange, onDelete }) {
 
   return (
     <div>
-      <span className={className}>
-        <span>
-          <input
-            type="checkbox"
-            defaultChecked={todoItem.completed}
-            onClick={handleClick}
-            readOnly
-          />
-        </span>
-        <span>
-          {todoItem.text}
-        </span>
-      </span>
-      <span>
-        <button onClick={onDelete}> delete</button>
-      </span>
+      <input
+        type="checkbox"
+        defaultChecked={todoItem.completed}
+        onClick={handleClick}
+        readOnly
+      />
+      <span className={className}>{todoItem.text}</span>
+      <button type="submit" className="link" onClick={onDelete}>
+        delete
+      </button>
     </div>
   );
 }
