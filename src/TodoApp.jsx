@@ -6,8 +6,6 @@ import TodoList from './TodoList';
 import './index.css';
 
 class TodoApp extends React.Component {
-  // TODO: Add ability to persist todo items
-  // TODO: load todo items from storage
   constructor(props) {
     super(props);
     this.state = {
@@ -44,6 +42,16 @@ class TodoApp extends React.Component {
     });
   }
 
+  delete(todoItem) {
+    const { storage } = this.props;
+
+    storage.delete(todoItem);
+
+    this.setState({
+      todoItems: storage.all(),
+    });
+  }
+
   render() {
     const { todoItems } = this.state;
     return (
@@ -51,6 +59,7 @@ class TodoApp extends React.Component {
         <TodoList
           todoItems={todoItems}
           onCompletedChange={(todoItem, completed) => this.changeCompleted(todoItem, completed)}
+          onDelete={(todoItem) => this.delete(todoItem)}
         />
         <TodoForm
           onSubmit={(todoItemText) => this.addTodoItem(todoItemText)}

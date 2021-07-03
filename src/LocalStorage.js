@@ -32,6 +32,14 @@ class LocalStorage {
 
     this.storage.setItem('todoItems', JSON.stringify(newTodoItems));
   }
+
+  delete(todoItem) {
+    const todoItems = this.all();
+
+    const newTodoItems = todoItems.filter((oldItem) => oldItem.id !== todoItem.id);
+
+    this.storage.setItem('todoItems', JSON.stringify(newTodoItems));
+  }
 }
 
 export default LocalStorage;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TodoItem({ todoItem, onCompletedChange }) {
+function TodoItem({ todoItem, onCompletedChange, onDelete }) {
   const className = todoItem.completed ? 'completed' : '';
 
   const handleClick = (event) => {
@@ -8,16 +8,17 @@ function TodoItem({ todoItem, onCompletedChange }) {
   };
 
   return (
-    <div className={className}>
-      <span>
-        <input
-          type="checkbox"
-          defaultChecked={todoItem.completed}
-          onClick={handleClick}
-          readOnly
-        />
-      </span>
-      {todoItem.text}
+    <div>
+      <input
+        type="checkbox"
+        defaultChecked={todoItem.completed}
+        onClick={handleClick}
+        readOnly
+      />
+      <span className={className}>{todoItem.text}</span>
+      <button type="submit" className="link" onClick={onDelete}>
+        delete
+      </button>
     </div>
   );
 }

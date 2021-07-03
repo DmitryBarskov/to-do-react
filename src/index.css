@@ -2,3 +2,11 @@
   text-decoration: line-through;
   color: grey;
 }
+
+button.link {
+  background: none;
+  border: 0;
+  color: darkblue;
+  text-decoration: underline;
+  cursor: pointer;
+}
