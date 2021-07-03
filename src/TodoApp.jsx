@@ -6,8 +6,6 @@ import TodoList from './TodoList';
 import './index.css';
 
 class TodoApp extends React.Component {
-  // TODO: Add ability to persist todo items
-  // TODO: load todo items from storage
   constructor(props) {
     super(props);
     this.state = {
