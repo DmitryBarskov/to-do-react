@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import TodoApp from './TodoApp';
 
 import LocalStorage from './LocalStorage';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -11,3 +12,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
+
+serviceWorkerRegistration.register();
