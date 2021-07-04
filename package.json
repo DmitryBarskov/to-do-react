@@ -22,7 +22,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build",
+    "deploy": "gh-pages -b github-pages-production -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "yarn run eslint --ext .js,.jsx src/"
